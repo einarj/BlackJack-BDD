@@ -7,6 +7,7 @@ module BlackJackBDD
 
     def start
       @output.puts 'Welcome to BlackJack BDD!'
+      @output.puts 'Here is your hand:'
     end
   end
 end
