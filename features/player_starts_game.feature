@@ -8,5 +8,5 @@ Feature: Player starts a game
     Given I am not yet playing
     When I start a new game
     Then I should see "Welcome to BlackJack BDD!"
-    And I should see "Here is your hand:"
+    And I should see "Here is your hand: S12, S13"
     And unless the player is bust I should see "Choose action (hit or stand)"
