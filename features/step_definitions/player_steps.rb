@@ -16,7 +16,7 @@ Given /^I am not yet playing$/ do
 end
 
 When /^I start a new game$/ do
-  @game = BlackJackBDD::Game.new(output)
+  @game = BlackJackBDD::Game.new(output, BlackJackBDD::Deck.new)
   @game.start
 end
 

@@ -1,12 +1,13 @@
 module BlackJackBDD
   class Game
 
-    def initialize(output)
+    def initialize(output, deck)
       @output = output
+      @deck = deck
     end
 
     def start
-      @deck = Deck.new
+      #@deck = Deck.new
       @player_cards = @deck.deal(2)
       @hand = Hand.new(@player_cards)
       @output.puts 'Welcome to BlackJack BDD!'
