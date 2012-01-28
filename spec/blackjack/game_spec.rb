@@ -2,22 +2,19 @@ require 'spec_helper'
 
 module BlackJackBDD
   describe Game do
+    let(:output) { double('output').as_null_object }
+
     describe "#start" do
+
+      let(:game) { Game.new(output, Deck.new) }
+      
       it "sends a welcome message" do
-        output = double('output').as_null_object
-        game = Game.new(output, Deck.new)
-
         output.should_receive(:puts).with('Welcome to BlackJack BDD!')
-
         game.start
       end
 
       it "displays the hand" do
-        output = double('output').as_null_object
-        game = Game.new(output, Deck.new)
-
         output.should_receive(:puts).with('Here is your hand: S12, S13')
-
         game.start
       end
     end
@@ -25,8 +22,6 @@ module BlackJackBDD
     describe "#prompt_for_action" do
 
       it "prompts for action when not bust" do
-        #pending("Need to fix a bug in hand score calculation")
-        output = double('output').as_null_object
         deck = double('deck').as_null_object
         deck.stub(:deal).and_return(["S1", "S2"])
 
@@ -39,7 +34,6 @@ module BlackJackBDD
       end
 
       it "notifies of bust" do
-        output = double('output').as_null_object
         game = Game.new(output, Deck.new)
 
         # Assuming the default hand S12, S13 (score 25)
