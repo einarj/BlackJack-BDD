@@ -7,7 +7,6 @@ module BlackJackBDD
     end
 
     def start
-      #@deck = Deck.new
       @player_cards = @deck.deal(2)
       @hand = Hand.new(@player_cards)
       @output.puts 'Welcome to BlackJack BDD!'
