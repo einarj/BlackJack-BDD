@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'blackjack'
+
+deck = BlackJackBDD::Deck.new.shuffle
+game = BlackJackBDD::Game.new(STDOUT, deck)
+game.start
