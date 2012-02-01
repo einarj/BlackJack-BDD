@@ -13,3 +13,5 @@ Feature: Dealer deals two cards to the player
     Given a new deck of cards
     When I deal two cards
     Then they should be "S12, S13"
+    And the player is bust
+
