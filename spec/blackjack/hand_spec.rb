@@ -12,5 +12,14 @@ module BlackJackBDD
 
     end
 
+    describe "#cards" do
+
+      it "returns its cards as an array" do
+        hand = Hand.new(['S1', 'S2'])
+        hand.cards.should == ['S1', 'S2']
+      end
+
+    end
+
   end
 end

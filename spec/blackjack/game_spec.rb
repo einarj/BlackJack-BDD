@@ -4,6 +4,21 @@ module BlackJackBDD
   describe Game do
     let(:output) { double('output').as_null_object }
 
+
+    describe "#dealer_hand" do
+      #let(:game) { Game.new(output, Deck.new) }
+
+      it "returns the dealers hand" do
+        deck = double('deck').as_null_object
+        deck.stub(:deal).and_return(["S1", "S2"], ["S3", "S4"])
+        game = Game.new(output, deck)
+        game.start
+        game.dealer_hand.cards.should == ["S3", "S4"]
+      end
+
+    end
+
+
     describe "#start" do
 
       let(:game) { Game.new(output, Deck.new) }

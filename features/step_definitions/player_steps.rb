@@ -25,7 +25,23 @@ Then /^I should see "([^"]*)"$/ do |message|
 end
 
 Then /^unless the player is bust I should see "([^"]*)"$/ do |message|
-  unless @game.hand.bust
+  unless @game.player_hand.bust
     output.message.should include(message)
   end
+end
+
+
+
+# Player wins the game
+Given /^a dealer hand of "([^"]*)"$/ do |hand|
+  @game = BlackJackBDD::Game.new(output, BlackJackBDD::Deck.new)
+  @game.dealer_hand = BlackJackBDD::Hand.new(hand.split(", "))
+end
+
+When /^I have a hand of "([^"]*)"$/ do |hand|
+  @game.player_hand = BlackJackBDD::Hand.new(hand.split(", "))
+end
+
+When /^the score is determined$/ do
+  @game.determine_winner
 end
