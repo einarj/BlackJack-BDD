@@ -1,11 +1,7 @@
 module BlackJackBDD
   class Game
 
-    attr_reader :dealer_hand
-    attr_writer :dealer_hand
-
-    attr_reader :player_hand
-    attr_writer :player_hand
+    attr_accessor :player_hand, :dealer_hand
 
     def initialize(output, deck)
       @output = output
@@ -13,16 +9,10 @@ module BlackJackBDD
     end
 
     def start
-      @player_cards = @deck.deal(2)
-      @dealer_cards = @deck.deal(2)
-      @player_hand = Hand.new(@player_cards)
-      @dealer_hand = Hand.new(@dealer_cards)
+      @player_hand = Hand.new(@deck.deal(2))
+      @dealer_hand = Hand.new(@deck.deal(2))
       @output.puts 'Welcome to BlackJack BDD!'
-      @output.puts 'Here is your hand: ' + @player_cards.join(', ')
-    end
-
-    def hand
-      @hand
+      @output.puts 'Here is your hand: ' + @player_hand.cards.join(', ')
     end
 
     def prompt_for_action
