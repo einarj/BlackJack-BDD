@@ -1,8 +1,7 @@
 module BlackJackBDD
   class Deck
 
-    attr_writer :cards
-    attr_reader :cards
+    attr_accessor :cards
 
     def initialize
       @cards = []
