@@ -12,10 +12,12 @@ module BlackJackBDD
       @player_hand = Hand.new(@deck.deal(2))
       @dealer_hand = Hand.new(@deck.deal(2))
       @output.puts 'Welcome to BlackJack BDD!'
-      @output.puts 'Here is your hand: ' + @player_hand.cards.join(', ')
     end
 
     def prompt_for_action
+
+      @output.puts 'Here is your hand: ' + @player_hand.cards.join(', ')
+
       if @player_hand.bust 
         @output.puts "You are bust! Score: " + @player_hand.score.to_s
       else

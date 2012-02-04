@@ -28,13 +28,16 @@ module BlackJackBDD
         game.start
       end
 
-      it "displays the hand" do
-        output.should_receive(:puts).with('Here is your hand: S12, S13')
-        game.start
-      end
     end
 
     describe "#prompt_for_action" do
+
+      it "displays the hand" do
+        game = Game.new(output, Deck.new)
+        output.should_receive(:puts).with('Here is your hand: S12, S13')
+        game.start
+        game.prompt_for_action
+      end
 
       it "prompts for action when not bust" do
         deck = double('deck').as_null_object

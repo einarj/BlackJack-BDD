@@ -18,6 +18,7 @@ end
 When /^I start a new game$/ do
   @game = BlackJackBDD::Game.new(output, BlackJackBDD::Deck.new)
   @game.start
+  @game.prompt_for_action
 end
 
 Then /^I should see "([^"]*)"$/ do |message|
