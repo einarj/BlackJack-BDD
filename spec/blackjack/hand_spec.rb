@@ -20,5 +20,38 @@ module BlackJackBDD
       end
     end
 
+    describe "#contains_ten_or_face" do
+      it "has no ten or face cards" do
+        @hand.contains_ten_or_face.should == false
+      end
+
+      it "has a jack" do
+        jacks = Hand.new(['S1', 'S11'])
+        jacks.contains_ten_or_face.should == true
+      end
+    end
+
+    describe "#contains_ace" do
+      it "has an ace" do
+        @hand.contains_ace.should == true
+      end
+
+      it "has no ace" do
+        noace = Hand.new(['S2', 'S3'])
+        noace.contains_ace.should == false
+      end
+    end
+
+    describe "#blackjack" do
+      it "is not blackjack" do
+        @hand.blackjack?.should == false
+      end
+
+     it "is blackjack" do
+      blackjack = Hand.new(['S1', 'S11'])
+      blackjack.blackjack?.should == true
+     end 
+    end
+
   end
 end

@@ -9,3 +9,9 @@ Feature: Player wins game
     When  I have a hand of "S10, S11"
     And the score is determined
     Then I should see "Congratulations, you have won!"
+
+  Scenario: Player wins with a blackjack
+    Given a dealer hand of "S2, S9, S10"
+    And I have a hand of "C1, C12"
+    When the score is determined
+    Then I should see "Congratulations, you have won!"

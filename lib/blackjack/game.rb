@@ -26,8 +26,21 @@ module BlackJackBDD
     end
 
     def determine_winner
-      if @player_hand.score > @dealer_hand.score
+      if @player_hand.bust
+        @output.puts "You are BUST!"
+      elsif @player_hand.score > @dealer_hand.score
         @output.puts "Congratulations, you have won!" unless @player_hand.bust
+      elsif @player_hand.blackjack?
+        @output.puts "You have blackjack!"
+        if @dealer_hand.blackjack?
+          @output.puts "Dealer also has blackjack. The score is tied."
+        else
+          @output.puts "Congratulations, you have won!"
+        end
+      else
+        @output.puts "Blackjack?: #{@dealer_hand.blackjack?} - Hand: #{@dealer_hand.cards}"
+        @output.puts "Dealer has blackjack!" if @dealer_hand.blackjack?
+        @output.puts "You LOOSE!"
       end
     end
   end

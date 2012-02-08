@@ -46,3 +46,13 @@ end
 When /^the score is determined$/ do
   @game.determine_winner
 end
+
+
+#Player loses the game
+Given /^a new deck$/ do
+  @game = BlackJackBDD::Game.new(output, BlackJackBDD::Deck.new)
+end
+
+When /^the cards have been dealt$/ do
+  @game.start
+end
