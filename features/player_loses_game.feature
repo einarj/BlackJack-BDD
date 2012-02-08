@@ -11,6 +11,7 @@ Feature: Player wins game
   Scenario: Player is bust
     Given a new deck
     When the cards have been dealt
+    And I choose hit
     And the score is determined
     Then I should see "You are BUST!"
 

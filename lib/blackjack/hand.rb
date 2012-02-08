@@ -11,12 +11,46 @@ module BlackJackBDD
       score > 21
     end
 
+
+    def values
+      @cards.collect { |card|
+        value = card[1..-1].to_i
+        value = 10 if value > 10
+        value
+      }
+    end
+
+    def non_ace_values
+      values - [1]
+    end
+
+    def aces
+      @cards.count { |card|
+        card[1..-1].to_i == 1
+      }
+    end
+
     def score
       s = 0
+      aces = aces()
       # Perhaps lambda is suitable here
-      @cards.each do |card|
-        s += card[1..-1].to_i
+
+      # start by scoring non-ace cards
+      non_ace_values.collect { |value|
+        s += value
+      }
+
+      # Maximize score for aces
+      while aces > 0 do
+        if s + aces*11 > 21
+          s += 1
+          aces -= 1
+        else
+          s += aces*11
+          aces = 0
+        end
       end
+
       s
     end
 

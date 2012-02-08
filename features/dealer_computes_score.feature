@@ -7,20 +7,23 @@ Feature: Dealer computes score
     When the hand is "<hand>"
     Then the score should be "<score>"
 
+    # The value of an ace can be either 1 or 11.
+    # The algorithm should choose ace value such that
+    # the overall score is maximized.
     Scenarios: Two cards of same sort
       | hand   | score |
-      | S1, S2 | 3 |
-      | S1, S3 | 4 |
-      | S1, S4 | 5 |
-      | S1, S5 | 6 |
-      | S1, S6 | 7 |
-      | S1, S7 | 8 |
-      | S1, S8 | 9 |
-      | S1, S9 | 10 |
-      | S1, S10 | 11 |
-      | S1, S11 | 12 |
-      | S1, S12 | 13 |
-      | S1, S13 | 14 |
+      | S1, S2 | 13 |
+      | S1, S3 | 14 |
+      | S1, S4 | 15 |
+      | S1, S5 | 16 |
+      | S1, S6 | 17 |
+      | S1, S7 | 18 |
+      | S1, S8 | 19 |
+      | S1, S9 | 20 |
+      | S1, S10 | 21 |
+      | S1, S11 | 21 |
+      | S1, S12 | 21 |
+      | S1, S13 | 21 |
 
       | S2, S3 | 5 |
       | S2, S4 | 6 |
@@ -30,9 +33,9 @@ Feature: Dealer computes score
       | S2, S8 | 10 |
       | S2, S9 | 11 |
       | S2, S10 | 12 |
-      | S2, S11 | 13 |
-      | S2, S12 | 14 |
-      | S2, S13 | 15 |
+      | S2, S11 | 12 |
+      | S2, S12 | 12 |
+      | S2, S13 | 12 |
 
       | S3, S4 | 7 |
       | S3, S5 | 8 |
@@ -41,9 +44,9 @@ Feature: Dealer computes score
       | S3, S8 | 11 |
       | S3, S9 | 12 |
       | S3, S10 | 13 |
-      | S3, S11 | 14 |
-      | S3, S12 | 15 |
-      | S3, S13 | 16 |
+      | S3, S11 | 13 |
+      | S3, S12 | 13 |
+      | S3, S13 | 13 |
 
       | S4, S5 | 9 |
       | S4, S6 | 10 |
@@ -51,6 +54,6 @@ Feature: Dealer computes score
       | S4, S8 | 12 |
       | S4, S9 | 13 |
       | S4, S10 | 14 |
-      | S4, S11 | 15 |
-      | S4, S12 | 16 |
-      | S4, S13 | 17 |
+      | S4, S11 | 14 |
+      | S4, S12 | 14 |
+      | S4, S13 | 14 |

@@ -10,9 +10,14 @@ Then /^they should be "([^"]*)"$/ do |arg1|
   @cards.should == arg1.split(', ')
 end
 
-Then /^the player is bust$/ do
+#Then /^the player is bust$/ do
+#  hand = BlackJackBDD::Hand.new(@cards)
+#  hand.bust.should == true
+#end
+
+Then /^the score should be (\d+)$/ do |score|
   hand = BlackJackBDD::Hand.new(@cards)
-  hand.bust.should == true
+  hand.score.should == score.to_i
 end
 
 When /^the deck is shuffled$/ do

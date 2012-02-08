@@ -27,7 +27,7 @@ end
 
 Then /^unless the player is bust I should see "([^"]*)"$/ do |message|
   unless @game.player_hand.bust
-    output.message.should include(message)
+    output.messages.should include(message)
   end
 end
 
@@ -55,4 +55,8 @@ end
 
 When /^the cards have been dealt$/ do
   @game.start
+end
+
+When /^I choose hit$/ do
+    pending # express the regexp above with the code you wish you had
 end
