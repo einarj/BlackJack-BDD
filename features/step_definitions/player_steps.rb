@@ -34,13 +34,15 @@ end
 
 
 # Player wins the game
-Given /^a dealer hand of "([^"]*)"$/ do |hand|
+Given /^a dealer hand of "([^"]*)"$/ do |cards|
   @game = BlackJackBDD::Game.new(output, BlackJackBDD::Deck.new)
-  @game.dealer_hand = BlackJackBDD::Hand.new(hand.split(", "))
+  hand = cards.split(", ")
+  @game.dealer_hand = BlackJackBDD::Hand.from_string_array(hand)
 end
 
 When /^I have a hand of "([^"]*)"$/ do |hand|
-  @game.player_hand = BlackJackBDD::Hand.new(hand.split(", "))
+  cards = hand.split(', ')
+  @game.player_hand = BlackJackBDD::Hand.from_string_array(cards)
 end
 
 When /^the score is determined$/ do
@@ -64,3 +66,4 @@ end
 Then(/^my hand will have (\d+) cards$/) do |count|
   @game.player_hand.card_count == count
 end
+

@@ -6,14 +6,9 @@ When /^I deal two cards$/ do
   @cards = @deck.deal(2)
 end
 
-Then /^they should be "([^"]*)"$/ do |arg1|
-  @cards.should == arg1.split(', ')
+Then /^they should be "([^"]*)"$/ do |hand|
+  @cards.map{|c| c.to_s}.should == hand.split(', ')
 end
-
-#Then /^the player is bust$/ do
-#  hand = BlackJackBDD::Hand.new(@cards)
-#  hand.bust.should == true
-#end
 
 Then /^the score should be (\d+)$/ do |score|
   hand = BlackJackBDD::Hand.new(@cards)
@@ -36,7 +31,7 @@ end
 
 When /^the hand is "([^"]*)"$/ do |cards|
   card_arr = cards.split(', ')
-  @hand = BlackJackBDD::Hand.new(card_arr)
+  @hand = BlackJackBDD::Hand.from_string_array(card_arr)
 end
 
 Then /^the score should be "([^"]*)"$/ do |score|

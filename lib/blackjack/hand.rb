@@ -80,5 +80,14 @@ module BlackJackBDD
 
       false
     end
+
+    def self.from_string_array(card_strings)
+      hand = card_strings.collect { |card| BlackJackBDD::Card.from_string(card) }
+      BlackJackBDD::Hand.new(hand)
+    end
+
+    def as_string_array
+      cards.collect { |card| card.to_s }
+    end
   end
 end
