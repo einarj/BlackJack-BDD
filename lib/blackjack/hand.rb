@@ -38,6 +38,10 @@ module BlackJackBDD
       }
     end
 
+    def cards
+      @cards
+    end
+
     def score
       points = 0
 

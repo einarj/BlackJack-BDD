@@ -53,10 +53,11 @@ module BlackJackBDD
 
       it "notifies of bust" do
         game = Game.new(output, Deck.new)
-
-        # Assuming the default hand S12, S13 (score 25)
-        output.should_receive(:puts).with("You are bust! Score: 25")
         game.start
+        game.hit_player
+
+        # Assuming the default hand S9, S12, S13 (dealer was dealt S10 and S11)
+        output.should_receive(:puts).with("You are bust! Score: 29")
         game.prompt_for_action
       end
     end
