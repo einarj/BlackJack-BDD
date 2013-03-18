@@ -10,7 +10,12 @@ module BlackJackBDD
 
     describe "#score" do
       it "computes score for two cards of same sort" do
-        @hand.score.should == 3
+        @hand.score.should == 13
+      end
+
+      it "should score aces in the optimal way" do
+        hand = Hand.new(["S10", "S1", "C1"])
+        hand.score.should == 12
       end
     end
 

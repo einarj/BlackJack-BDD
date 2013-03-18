@@ -24,34 +24,33 @@ module BlackJackBDD
       values - [1]
     end
 
-    def aces
+    def ace_values
       @cards.count { |card|
         card[1..-1].to_i == 1
       }
     end
 
     def score
-      s = 0
-      aces = aces()
-      # Perhaps lambda is suitable here
+      points = 0
 
       # start by scoring non-ace cards
       non_ace_values.collect { |value|
-        s += value
+        points += value
       }
 
       # Maximize score for aces
+      aces = ace_values
       while aces > 0 do
-        if s + aces*11 > 21
-          s += 1
+        if points + aces*11 > 21
+          points += 1
           aces -= 1
         else
-          s += aces*11
+          points += aces*11
           aces = 0
         end
       end
 
-      s
+      points
     end
 
     # A hand is a blackjack if it contains exactly
