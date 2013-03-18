@@ -2,9 +2,12 @@ require 'spec_helper'
 
 module BlackJackBDD
   describe Hand do
-   
+
     before(:each) do
-      @hand = Hand.new(['S1', 'S2'])
+      @hand = Hand.new([
+        BlackJackBDD::Card.new('S', 1),
+        BlackJackBDD::Card.new('S', 2)
+      ])
     end
 
 
@@ -14,14 +17,18 @@ module BlackJackBDD
       end
 
       it "should score aces in the optimal way" do
-        hand = Hand.new(["S10", "S1", "C1"])
+        hand = Hand.new([
+          BlackJackBDD::Card.new("S", 10),
+          BlackJackBDD::Card.new("S", 1),
+          BlackJackBDD::Card.new("C", 1)
+        ])
         hand.score.should == 12
       end
     end
 
     describe "#cards" do
       it "returns its cards as an array" do
-        @hand.cards.should == ['S1', 'S2']
+        @hand.cards.class.should == Array
       end
     end
 
@@ -31,7 +38,10 @@ module BlackJackBDD
       end
 
       it "has a jack" do
-        jacks = Hand.new(['S1', 'S11'])
+        jacks = Hand.new([
+          BlackJackBDD::Card.new('S', 1), 
+          BlackJackBDD::Card.new('S', 11)
+        ])
         jacks.contains_ten_or_face.should == true
       end
     end
@@ -42,7 +52,10 @@ module BlackJackBDD
       end
 
       it "has no ace" do
-        noace = Hand.new(['S2', 'S3'])
+        noace = Hand.new([
+          BlackJackBDD::Card.new('S', 2), 
+          BlackJackBDD::Card.new('S', 3)
+        ])
         noace.contains_ace.should == false
       end
     end
@@ -53,7 +66,10 @@ module BlackJackBDD
       end
 
      it "is blackjack" do
-      blackjack = Hand.new(['S1', 'S11'])
+      blackjack = Hand.new([
+        BlackJackBDD::Card.new('S', 1),
+        BlackJackBDD::Card.new('S', 11)
+      ])
       blackjack.blackjack?.should == true
      end 
     end

@@ -22,9 +22,7 @@ module BlackJackBDD
 
     def values
       @cards.collect { |card|
-        value = card[1..-1].to_i
-        value = 10 if value > 10
-        value
+        card.blackjack_value
       }
     end
 
@@ -34,12 +32,8 @@ module BlackJackBDD
 
     def ace_values
       @cards.count { |card|
-        card[1..-1].to_i == 1
+        card.is_ace?
       }
-    end
-
-    def cards
-      @cards
     end
 
     def score
@@ -73,7 +67,7 @@ module BlackJackBDD
 
     def contains_ten_or_face
       @cards.each do |card|
-        return true if [10,  11, 12, 13].include? card[1..-1].to_i
+        return true if [10,  11, 12, 13].include? card.value
       end
 
       false
@@ -81,7 +75,7 @@ module BlackJackBDD
 
     def contains_ace
       @cards.each do |card|
-        return true if card[1..-1].to_i == 1
+        return true if card.is_ace?
       end
 
       false

@@ -41,7 +41,10 @@ module BlackJackBDD
 
       it "prompts for action when not bust" do
         deck = double('deck').as_null_object
-        deck.stub(:deal).and_return(["S1", "S2"])
+        deck.stub(:deal).and_return([
+          BlackJackBDD::Card.new("S", 1), 
+          BlackJackBDD::Card.new("S", 2)
+        ])
 
         game = Game.new(output, deck)
 

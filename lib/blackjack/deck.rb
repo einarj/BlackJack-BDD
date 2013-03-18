@@ -7,7 +7,7 @@ module BlackJackBDD
       @cards = []
       ['H', 'D', 'C', 'S'].each do |brand|
         (1..13).each do |value|
-          @cards <<  brand + value.to_s
+          @cards << BlackJackBDD::Card.new(brand, value)
         end
       end
     end
