@@ -4,6 +4,7 @@ Feature: Player takes a hit
   Taking a hit means that the dealer will deal one new card to the player.
 
   Scenario:
-    Given I have been dealt a hand of "S3, S10"
+    Given a new deck
+    When  I have a hand of "S3, S10"
     When I choose hit
-    Then my hand will have "3" cards
+    Then my hand will have 3 cards

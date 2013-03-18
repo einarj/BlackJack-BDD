@@ -58,5 +58,9 @@ When /^the cards have been dealt$/ do
 end
 
 When /^I choose hit$/ do
-    pending # express the regexp above with the code you wish you had
+  @game.hit_player
+end
+
+Then(/^my hand will have (\d+) cards$/) do |count|
+  @game.player_hand.card_count == count
 end

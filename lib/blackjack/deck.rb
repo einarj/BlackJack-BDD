@@ -27,6 +27,10 @@ module BlackJackBDD
       @cards.pop(number_of_cards)
     end
 
+    def deal_one
+      @cards.pop(1).first
+    end
+
     def ==(other_deck)
       @cards == other_deck.cards
     end

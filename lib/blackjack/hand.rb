@@ -7,6 +7,14 @@ module BlackJackBDD
       @cards = cards
     end
 
+    def receive(card)
+      @cards << card
+    end
+
+    def card_count
+      @cards.count
+    end
+
     def bust
       score > 21
     end

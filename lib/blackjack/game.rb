@@ -8,6 +8,10 @@ module BlackJackBDD
       @deck = deck
     end
 
+    def hit_player
+      @player_hand.receive(@deck.deal_one)
+    end
+
     def start
       @player_hand = Hand.new(@deck.deal(2))
       @dealer_hand = Hand.new(@deck.deal(2))
